@@ -87,6 +87,10 @@ caption = _caption;
 	[super dealloc];
 }
 
+- (BOOL)isCached {
+	return [[SDWebImageManager sharedManager] isURLCached:_photoURL];
+}
+
 #pragma mark MWPhoto Protocol Methods
 
 - (UIImage *)underlyingImage {

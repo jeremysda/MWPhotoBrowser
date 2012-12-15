@@ -114,7 +114,16 @@ typedef NSString *(^CacheKeyFilter)(NSURL *url);
 // use options:SDWebImageRetryFailed|SDWebImageLowPriority instead
 - (void)downloadWithURL:(NSURL *)url delegate:(id<SDWebImageManagerDelegate>)delegate retryFailed:(BOOL)retryFailed lowPriority:(BOOL)lowPriority __attribute__ ((deprecated));
 
+/**
+ * Check to see if the given URL is present in cache.
+ *
+ * @param url The URL to the image
+ * @param isCached A block called when image's cache status has been determined
+ */
+- (BOOL)isURLCached:(NSURL*)url;
+
 #if NS_BLOCKS_AVAILABLE
+
 /**
  * Downloads the image at the given URL if not present in cache or return the cached version otherwise.
  *

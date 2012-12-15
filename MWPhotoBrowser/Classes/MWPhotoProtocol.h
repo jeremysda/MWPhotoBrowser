@@ -32,6 +32,9 @@
 // methods returns nil.
 - (UIImage *)underlyingImage;
 
+// Return if the underlying image is cached in memory or on disk
+- (BOOL)isCached;
+
 // Called when the browser has determined the underlying images is not
 // already loaded into memory but needs it.
 // You must load the image asyncronously (and decompress it for better performance).

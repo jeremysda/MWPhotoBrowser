@@ -141,7 +141,13 @@ static SDWebImageManager *instance;
     [[SDImageCache sharedImageCache] queryDiskCacheForKey:[self cacheKeyForURL:url] delegate:self userInfo:info];
 }
 
+- (BOOL)isURLCached:(NSURL*)url;
+{
+	return [[SDImageCache sharedImageCache] queryDiskCacheForKey:[self cacheKeyForURL:url]];
+}
+
 #if NS_BLOCKS_AVAILABLE
+
 - (void)downloadWithURL:(NSURL *)url delegate:(id)delegate options:(SDWebImageOptions)options success:(void (^)(UIImage *image))success failure:(void (^)(NSError *error))failure
 {
     [self downloadWithURL:url delegate:delegate options:options userInfo:nil success:success failure:failure];

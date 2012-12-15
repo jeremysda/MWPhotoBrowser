@@ -294,6 +294,21 @@ static natural_t get_free_memory(void)
     return image;
 }
 
+- (BOOL)queryDiskCacheForKey:(NSString *)key
+{
+	if( !key ) {
+		return FALSE;
+	}
+    // First check the in-memory cache...
+    UIImage *image = [memCache objectForKey:key];
+    if (image)
+    {
+		return TRUE;
+	}
+	return [[NSFileManager defaultManager] fileExistsAtPath:[self cachePathForKey:key]];
+}
+
+
 - (void)queryDiskCacheForKey:(NSString *)key delegate:(id <SDImageCacheDelegate>)delegate userInfo:(NSDictionary *)info
 {
     if (!delegate)

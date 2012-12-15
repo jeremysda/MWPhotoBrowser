@@ -88,6 +88,14 @@
 - (void)queryDiskCacheForKey:(NSString *)key delegate:(id <SDImageCacheDelegate>)delegate userInfo:(NSDictionary *)info;
 
 /**
+ * Query the disk cache asynchronousely.
+ *
+ * @param key The unique key used to store the wanted image
+ * @param isCached A block to report back information about the state of the image on disk
+ */
+- (BOOL)queryDiskCacheForKey:(NSString *)key;
+
+/**
  * Remove the image from memory and disk cache synchronousely
  *
  * @param key The unique image cache key
